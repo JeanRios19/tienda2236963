@@ -8,7 +8,17 @@
     <form method="POST"
        action="{{route('productos.store') }}"
        class="col s12">
-    @csrf    
+    @csrf  
+    @if(session('mensaje'))
+      <div class="row">
+        <div class="col s8">
+          <span class="teal-text text-darken-2">
+            {{  session('mensaje')  }}
+          </span>
+        </div>
+      </div>
+    @endif
+    
       <div class="row">
         <div class="input-field col s8">
           <input placeholder="Nombre de Producto" 
@@ -17,6 +27,7 @@
           class="validate"
           name="nombre">
           <label for="Nombre">Nombre de Producto</label>
+          <span> {{ $errors->first('nombre')}}</span>
         </div>
       </div>
       <div class="row">
@@ -24,19 +35,20 @@
           <textarea class="materialize-textarea"
              id="descripcion"
              name="descripcion">
-              
           </textarea>
           <label for="descripcion">Descripcion</label>
+          <span> {{ $errors->first('descripcion')}}</span>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <input 
+        <div class="input-field col s8">
+          <input placeholder=""
           id="precio"
           name="precio" 
           type="text"  
           class="validate">
           <label for="Precio">Precio</label>
+          <span> {{ $errors->first('precio')}}</span>
         </div>
         <div class="file-field input-field col s8">
       <div class="btn">
@@ -59,6 +71,7 @@
       @endforeach
     </select>
     <label>Categorias Disponibles</label>
+    <span> {{ $errors->first('categoria')}}</span>
       </div>
       </div>
       <div class="row">
@@ -72,6 +85,7 @@
       @endforeach
     </select>
     <label>Marcas Disponibles</label>
+    <span> {{ $errors->first('Marca')}}</span>
       </div>
       </div>
       <div class="row">
