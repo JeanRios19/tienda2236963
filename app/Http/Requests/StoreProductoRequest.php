@@ -24,11 +24,12 @@ class StoreProductoRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre" => 'required|alpha',
+            "nombre" => 'required|unique:productos,nombre',
             "descripcion" => 'required|max:180',
-            "precio" => 'required|numeric|max:10000',
+            "precio" => 'required|numeric|max:100000000',
             "categoria" => 'required',
-            "Marca" => 'required' 
+            "Marca" => 'required',
+            "imagen" => 'required|image'
         ];
     }
 
@@ -39,6 +40,9 @@ class StoreProductoRequest extends FormRequest
             'required' => 'Le falto aqui mi perro',
             'alpha' => 'Solo letras por favor ',
             'max' => 'Maximo :max carecteres',
+            'image' => "solo archivo tipo imagen",
+            'unique' => 'Este nombre o imagen ya existe'
+
 
         ];
 
