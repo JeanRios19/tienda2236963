@@ -25,7 +25,9 @@
   <script>
       document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('select');
-         var instances = M.FormSelect.init(elems, []);
+        let tabs = document.querySelector(".tabs");
+        var instance = M.Tabs.init(tabs);
+        var instances = M.FormSelect.init(elems, []);
       });
   </script>
 </body>
